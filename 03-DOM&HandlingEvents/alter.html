@@ -20,7 +20,32 @@
 		and psychedelic music.</p>
 		
 		<script>
-			// a JavaScript code here ...
+			function addPart2(){
+				let part2 = document.createTextNode(" Part2"); 
+				document.getElementsByTagName("h1")["0"].appendChild(part2);
+			}
+			
+			function bandDescription(){
+				document.getElementsByTagName("p")["1"].setAttribute("style", "visibility: visible;");
+			}
+			
+			function italian(){
+				document.getElementsByTagName("p")["0"].setAttribute("style", "font-style: italic;");
+			}
+			
+			function yellowBackground(){
+				document.body.style.background = "yellow";
+			}
+			
+			function noRights(){
+				alert("COPYRIGHT MESSAGE");
+			}
+			
+			function image(){
+				let imgg = document.createElement("img");
+				imgg.src ="https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg";
+				document.body.appendChild(imgg);
+			}
 			
 		</script>
 	</body>
