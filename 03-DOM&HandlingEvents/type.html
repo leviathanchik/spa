@@ -23,7 +23,41 @@
 		<textarea rows="15" cols="50"></textarea><br>
 		
 		<script>
-			// a JavaScript code here ...
+				var timer = 30;
+				var started = false;
+				let counter;
+
+				function startTimer() {
+					if (!started) {
+						counter = setInterval(countdown, 1000);
+						started = true;
+					}
+				}
+
+				function countdown() {
+					timer = timer - 1;
+					if (timer <= 0) {
+						clearInterval(counter);
+						document.getElementById("timer").innerHTML = "Koniec";
+						setResults();
+						return;
+					}
+					document.getElementById("timer").innerHTML = "Zostało " + timer + " s";
+				}
+				
+				function setResults() {
+					let textArea = document.querySelector("textarea").value;
+					let words = textArea.split(" ").length;
+					let chars = textArea.trim().length;
+					let resultWords = document.createElement("p");
+					let resultChars = document.createElement("p");
+					
+					resultWords.innerHTML = `Liczba słów pisanych w przeciągu 30s : ${words}`;
+					resultChars.innerHTML = `Liczba znaków pisanych w przeciągu 30s: ${chars}`;
+					document.body.appendChild(resultWords);
+					document.body.appendChild(resultChars);
+					textArea.value = "";
+				}
 			
 		</script>
 		
