@@ -23,7 +23,20 @@
 				console.log("Status:", r.status);
 				console.log("Status text:", r.statusText);
 				console.log("-----");
+				
+
+				if (r.readyState == 4 && r.status == 200) {
+					console.log('Udało się połączyć');
+					window.data = JSON.parse(r.responseText);				
+					console.log(data);
+				}
+					else {
+						console.log('Nie połączono z serwerem');
+						console.log(connect.status);
+					}
+				
 			};
+
 		</script>
 
 	</body>

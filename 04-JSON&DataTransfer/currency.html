@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Kantor</title>
+		<meta charset="UTF-8">
+	</head>
+		<h1>Kurs walut</h1>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script>
+			$(function () {
+				$.getJSON('http://api.nbp.pl/api/exchangerates/tables/a/?format=json', function(effectiveDate) {
+					for (var i = 0; i < effectiveDate.length; i++) {
+						var obj = effectiveDate[i];
+						var el = document.getElementById(obj.code);
+						if (el) {
+							el.innerHTML = el.innerHTML.replace('0,0000', obj.mid); 
+						}
+					}
+				}).fail( function(d, textStatus, error) {
+					console.error("Request failed, status: " + textStatus + ", error: " + error)
+				});
+ 
+			});
+		</script>
+ 
+<div id="USD">USD 0,0000 zl.</div>
+<div id="EUR">EUR 0,0000 zl.</div>
+<div id="GBP">GBP 0,0000 zl.</div>
+
+	</body>
+</html>

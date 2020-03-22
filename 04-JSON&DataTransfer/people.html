@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Personal data of people</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		
+		<h1>Data of people</h1>
+		<input onclick="getJsonData()" type="button" value="Display peoples data">
+		<ol id="lista"></ol>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		
+	 <script>
+	 
+		function getJsonData() {
+			$(function(){
+				$.getJSON('people.json', function(data) {
+					for(var i=0;i<data.people.length;i++){
+						$('#people').append('<tr><td>' + data.people[i].name + '</td><td>' + data.people[i].surname + 
+						'</td><td>' + data.people[i].country + '</td><tr>');
+					}
+				});
+			});
+		}
+	
+	</script> 
+	
+	</body>
+</html
