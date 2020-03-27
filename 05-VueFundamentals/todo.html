@@ -4,7 +4,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  <script>
+ <div id="app">
+    <p>DO WYKONANIA</p>
+      <li v-for="item in toDoList">{{ item }}</li>   
+ <script>
     var app = new Vue({
       el: '#app',
       data: {
@@ -12,7 +15,13 @@
           'Purchase two tickets to cinema',
           'Feed cat',
           'Pay cable bill',
-          'Go shopping'
+          'Go shopping',
+        ]
+      },
+      computed: {
+        toDoList: function () {
+          return this.todo.sort();
+        }
       }
     });
   </script>

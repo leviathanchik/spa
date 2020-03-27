@@ -2,8 +2,26 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+	
+		#app {
+			border: 1px solid black ;
+			 max-width: 300px;
+			text-align: center
+		}	
+		span {
+			display: block;
+		}
+	</style>
 </head>
 <body>
+<div id="app">
+    <span><b>{{ company.toUpperCase() }}</b></span>
+    <span>{{ address }}</span>
+    <span>{{ postcode }} {{ city }}</span>
+    <span>tel. {{ landline}}, {{mobile}}</span>
+    <a v-bind:href="web">{{ web }}</a>
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
@@ -17,6 +35,10 @@
         web: 'http://www.unikpol.pl'
       }
     });
+	
+	
+	
+	
   </script>
 
 </body>
