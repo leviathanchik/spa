@@ -4,31 +4,33 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  <div id="app">
-    <h1>TO DO APP</h1>
-    <span>To do: </span>
-    <input type="text" v-model="todo">
-    <button type="button" @click="add()">Add</button>
-    <h3>To Do List</h3>
-    <ol>
-      <li>...</li>
-      <li>...</li>
-      <li>...</li>
-    </ol>
-  </div>
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        todo: '',
-        todos: []
-      },
-      methods: {
-        add: function() {
-          this.todos.push(this.todo);
-        }
-      }
-    });
-  </script>
+<div id="app">
+	<h1>To Do List</h1>
+	<input type="text" class="add" placeholder="do wykonania będzie" v-on:keyup.enter="addTodo">
+	<li v-for="todo in todos" :key="todo.id" class="flex">
+	<input type="checkbox" class="checkbox" v-model="todo.done">
+	<del v-if="todo.done">{{ todo.text }}</del>
+	<span v-else>{{ todo.text }}</span>
+	<button class="remove" v-on:click="removeTodo(todo.id)">Usuń</button>
+	</li>
+</div>
+ <script>
+    new Vue({
+		el: "#app",
+		data: {
+			todos: []
+		},
+	methods: {
+		addTodo({target}){
+			this.todos.push({text: target.value, done: false, id: Date.now()})
+			target.value = ''
+		},
+		removeTodo(id) {
+			this.todos = this.todos.filter(todo => todo.id !== id)
+		}
+	}
+})
+</script>
+
 </body>
 </html>

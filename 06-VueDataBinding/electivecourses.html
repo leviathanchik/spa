@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>Przedmioty</p>
+        <input type="checkbox" id="pp1" value="pp1" v-model="Courses">
+        <label for="pp1">Pracownia programowania 1</label><br>
+        <input type="checkbox" id="pp2" value="pp2" v-model="Courses">
+        <label for="pp2">Pracownia programowania 2</label><br>
+        <input type="checkbox" id="pp3" value="pp3" v-model="Courses">
+        <label for="pp3">Pracownia programowania 3</label><br>
+        <input type="checkbox" id="pp4" value="pp4" v-model="Courses">
+        <label for="pp4">Pracownia programowania 4</label><br>
+        <input type="checkbox" id="pp5" value="pp5" v-model="Courses">
+        <label for="pp5">Pracownia programowania 5</label><br><br>
+        <span>Wybrano {{ Courses.length }} przedmiotów</span>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                Courses: []
+            }
+        });
+    </script>
+</body>
+</html>

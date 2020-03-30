@@ -6,18 +6,46 @@
 <body>
   <h1>Body Mass Index</h1>
   <div id="app">
-    <span>Waga: </span>
-    <input> kg<br>
-    <span>Wzrost: </span>
-    <input> cm
-    <p>Wskaźnik BMI:</p>
+    <span>Wzrost :{{ height }}cm</span>
+    <input v-model="height"><br>
+    <span>Waga :{{ weight }}kg</span>
+    <input v-model="weight">
+    <p>Wskaźnik BMI: {{ bmiCalculation }}</p> 
   </div>
   <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-      }
-    });
+    new Vue({
+		el: '#app',
+		data: {
+		height: null ,
+		weight: null
+	},
+	computed: {
+		bmiCalculation: function() {
+		var weight = parseInt(this.weight);
+		var height = parseInt(this.height) / 100;
+		var bmi = weight / (height * height)
+		if(bmi < 18.5) {
+			return 'Underweight:' + bmi.toFixed(2); 
+		}
+		else if (bmi >=18.5 && bmi <25 ) {
+			return 'wartość prawidłowa: ' + bmi.toFixed(2); 
+		}
+		else if (bmi >=25 && bmi <30 ) {
+			return 'nadwaga ' + bmi.toFixed(2); 
+		}
+		else if (bmi >=30 && bmi <35 ) {
+			return 'I stopień otyłości ' + bmi.toFixed(2); 
+		}
+		else if (bmi >=35 && bmi <40 ) {
+			return 'II stopień otyłości' + bmi.toFixed(2); 
+		}
+		else if (bmi >40 ) {
+			return 'otyłość skrajna' + bmi.toFixed(2); 
+		}
+    }
+  }
+})
+
   </script>
 
 </body>
