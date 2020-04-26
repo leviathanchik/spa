@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <the-green-mile></the-green-mile>
+	<mile></mile>
+	<whiplash></whiplash>
+  </div>
+<script>
+  Vue.component('the-green-mile', {
+    data: function(){
+      return{
+        name: "The Green Mile",
+        director: "	Frank Darabont",
+		year: 1999
+      }
+    },
+    template: "<div><h1>{{ name }}</h1><p>{{ director }}</p> <p> {{ year }}</p></div>"
+  })
+  
+  Vue.component('mile', {
+    data: function(){
+      return{
+        name: "8 Mile",
+        director: "Curtis Hanson",
+		year: 2002
+      }
+    },
+    template: "<div><h1>{{ name }}</h1><p>{{ director }}</p> <p> {{ year }}</p></div>"
+  })
+  
+   Vue.component('whiplash', {
+    data: function(){
+      return{
+        name: "Whiplash",
+        director: "	Damien Chazelle",
+		year: 2014
+      }
+    },
+    template: "<div><h1>{{ name }}</h1><p>{{ director }}</p> <p> {{ year }}</p></div>"
+  })
+
+   var app = new Vue({
+      el: '#app'
+    });
+</script>
+</body>
+</html>
